@@ -37,7 +37,7 @@ module.exports = {
         res.status(500).json(err);
       });
   },
-  updateThoughts(req, res) {
+  updateThought(req, res) {
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
       { $set: req.body },
@@ -52,5 +52,25 @@ module.exports = {
         console.log(err);
         res.status(500).json(err);
       });
+  },
+  deleteThought(req, res) {
+    Thought.findOneAndRemove({ _id: req.params.thoughtId })
+      .then((video) =>
+        !video
+          ? res.status(404).json({ message: "No thought with this ID!" })
+          : User.findOneAndUpdate(
+              { thoughts: req.params.thoughtId },
+              { $pull: { thoughts: req.params.thoughtId } },
+              { new: true }
+            )
+      )
+      .then((user) =>
+        !user
+          ? res
+              .status(404)
+              .json({ message: "Thought created but no user with this ID" })
+          : res.json({ message: "Thought deleted" })
+      )
+      .catch((err) => res.status(500).json(err));
   },
 };
