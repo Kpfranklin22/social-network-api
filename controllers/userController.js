@@ -3,6 +3,7 @@ const User = require("../models/User");
 module.exports = {
   getUsers(req, res) {
     User.find()
+      .select("-__v")
       .then((users) => res.json(users))
       .catch((err) => re.status(500).json(err));
   },
@@ -23,5 +24,4 @@ module.exports = {
       .then((dbUserData) => res.json(dbUserData))
       .catch((err) => res.status(500).json(err));
   },
-  
 };

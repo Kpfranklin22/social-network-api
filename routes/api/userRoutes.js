@@ -3,21 +3,24 @@ const {
   getUsers,
   getSingleUser,
   createUser,
-  deleteUser,
-  addThought,
-  removeThought,
+  // deleteUser,
+  // addThought,
+  // removeThought,
 } = require("../../controllers/userController");
 
 // /api/users
-router.use("/").get(getUsers).post(createUser);
+router.route("/").get(getUsers).post(createUser);
 
 // /api/users/:usersId
-router.route("/:userId").get(getSingleUser).delete(deleteUser);
+router.route("/:userId").get(getSingleUser)
+// .delete(deleteUser);
 
 // /api/users/:userId/thoughts
-router.use("/:userId/thoughts").post(addThought);
+router.route("/:userId/thoughts")
+// .post(addThought);
 
 // /api/users/:userId/thoughts/:thoughtId
-router.use("/:userId/thoughts/:thoughtsId").delete(removeThought);
+router.route("/:userId/thoughts/:thoughtsId")
+// .delete(removeThought);
 
 module.exports = router

@@ -1,12 +1,9 @@
 const express = require("express");
 const db = require("./config/connection");
 const routes = require("./routes");
-// const mongodb = require("mongodb");
 
 const PORT = process.env.port || 3001;
 const app = express();
-
-let db;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
