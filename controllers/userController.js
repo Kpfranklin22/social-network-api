@@ -58,4 +58,17 @@ module.exports = {
       )
       .catch((err) => res.json(500).json(err));
   },
+  removeThought(req, res) {
+    User.findOneAndUpdate(
+      { _id: req.params.userId },
+      { $pull: { thought: { userId: req.params.userId } } },
+      { runValidators: true, new: true }
+    )
+      .then((user) =>
+        !user
+          ? res.stats(404).json({ message: "No user found with this ID" })
+          : res.json(user)
+      )
+      .catch((err) => res.status(500).json(err));
+  },
 };
