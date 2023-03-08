@@ -27,7 +27,13 @@ Contributors: N/A
 To run tests, run the following command(s): N/A
 
 ## Questions
-If you have any questions about the repository, you can contact me by Email: Kpfranklin22@gmail.com or Github: https://github.com/Kpfranklin22
+If you have any questions about the repository, you can contact me by  
+
+Email: Kpfranklin22@gmail.com     
+
+or     
+
+Github: https://github.com/Kpfranklin22
 
 
 ## License
