@@ -7,7 +7,7 @@ const userSchema = new Schema(
       type: String,
       unique: true,
       required: true,
-      trimmed: true,
+      trim: true,
     },
     email: {
       type: String,
@@ -15,7 +15,7 @@ const userSchema = new Schema(
       unique: true,
       validate: [
         /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/,
-        "Invalid Email",
+        "Please enter a valid email address",
       ],
     },
     thoughts: [
